@@ -22,6 +22,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         try {
 
+            //Convert String to XML Document
             InputStream is = new ByteArrayInputStream(value.toString().getBytes());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -29,14 +30,20 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
             doc.getDocumentElement().normalize();
 
+            //Create a Node List from XML
             NodeList nList = doc.getElementsByTagName("row");
 
             for (int i = 0; i < nList.getLength(); i++) {
 
                 String type = nList.item(i).getAttributes().getNamedItem("PostTypeId").getNodeValue();
 
+                //Get all Posts of type=Question
                 if (type.equals("1")) {
+
+                    //Get The Contents of the Post
                     String postBody = nList.item(i).getAttributes().getNamedItem("Body").getNodeValue();
+
+                    //Parse String by removing tags, special Characters and contractions and then splitting it into words
                     String[] words = TextParser.parseInputXml(postBody).split("[^A-Za-z']");
                     for (String word : words) {
                         context.write(new Text(word), new IntWritable(1));
