@@ -34,11 +34,15 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                 if (type.equals("1")) {
 
                     //Get The Contents of the Title
-                    String postBody = nList.item(i).getAttributes().getNamedItem("Title").getNodeValue();
+                    String titleBody = nList.item(i).getAttributes().getNamedItem("Title").getNodeValue();
 
                     //Parse String by removing tags, special Characters and contractions and then splitting it into words
-                    String[] words = TextParser.parseInputXml(postBody).split("[^A-Za-z']");
+                    String[] words = TextParser.parseInputXml(titleBody).split("[^A-Za-z']");
                     for (String word : words) {
+                        if(word.isEmpty()){
+                            continue;
+                        }
+
                         context.write(new Text(word), new IntWritable(1));
                     }
                 }
