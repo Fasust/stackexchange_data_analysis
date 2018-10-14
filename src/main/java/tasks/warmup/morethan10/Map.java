@@ -7,6 +7,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import utility.TextParser;
+import utility.XMLParser;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,19 +18,13 @@ import java.io.InputStream;
 public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
     @Override
-    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+    protected void map(LongWritable key, Text value, Context context) {
 
         try {
 
-            //Convert String to XML Document
-            InputStream is = new ByteArrayInputStream(value.toString().getBytes());
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(is);
-            doc.getDocumentElement().normalize();
+            //Parse XML String to NodeList
+            NodeList nList = XMLParser.xmlStringToNodelist(value.toString(),"row");
 
-            //Create a Node List from XML
-            NodeList nList = doc.getElementsByTagName("row");
 
             for (int i = 0; i < nList.getLength(); i++) {
 
