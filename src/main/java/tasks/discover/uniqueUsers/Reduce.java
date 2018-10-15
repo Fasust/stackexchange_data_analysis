@@ -15,12 +15,12 @@ public class Reduce extends Reducer<Text, Text, Text, Text> {
         int length = 0;
         String userName = "";
 
+        //Check if there is Multiple user entries with the same id (Uniqueness)
         for (Text value : values) {
             userName = value.toString();
             length ++;
         }
-
-        //check if there is only one user with ID (Unique)
+        
         if(length == 1){
             try {
                 context.write(key, new Text(userName));

@@ -20,7 +20,7 @@ public class Map extends Mapper<LongWritable, Text, Text, Text> {
 
             for (int i = 0; i < nList.getLength(); i++) {
 
-                //Get The Contents of the Title
+                //Get User ID and Name
                 String id = nList.item(i).getAttributes().getNamedItem("Id").getNodeValue();
                 String userName = nList.item(i).getAttributes().getNamedItem("DisplayName").getNodeValue();
 

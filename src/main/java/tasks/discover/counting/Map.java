@@ -21,11 +21,9 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
             for (int i = 0; i < nList.getLength(); i++) {
 
-                //Get The Contents of the Title
+                //Get User Id
                 String id = nList.item(i).getAttributes().getNamedItem("Id").getNodeValue();
-
                 context.write(new Text(id), new IntWritable(1));
-
             }
         } catch (Exception e) {
             e.printStackTrace();
