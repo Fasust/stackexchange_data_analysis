@@ -23,7 +23,7 @@ public class Reduce extends Reducer<LongWritable, Text, Text, LongWritable> {
     @Override
     protected void reduce(LongWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         //If we have reached the Output Size, exit immediately (redundant but slightly more efficient)
-        if(writeCount>= OUTPUT_SIZE){
+        if(writeCount >= OUTPUT_SIZE){
             return;
         }
 
