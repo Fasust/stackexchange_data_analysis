@@ -13,6 +13,8 @@ import utility.XMLParser;
 
 public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
+    private static final CountryValidator countryValidator = new CountryValidator();
+
     @Override
     protected void map(LongWritable key, Text value, Context context) {
         try {
@@ -32,7 +34,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                 String[] potentialCountries = TextParser.parseInputXml(location).split("[^A-Za-z']");
 
                 for(String coun : potentialCountries){
-                    if(CountryValidator.isCountry(coun)){
+                    if(countryValidator.isCountry(coun.toLowerCase())){
                         context.write(new Text(coun), new IntWritable(1));
                     }
                 }
