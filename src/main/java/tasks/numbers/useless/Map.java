@@ -1,5 +1,4 @@
-package tasks.warmup.wordcount;
-
+package tasks.numbers.useless;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -8,7 +7,6 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.w3c.dom.NodeList;
 import utility.TextParser;
 import utility.XMLParser;
-
 
 public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
@@ -33,7 +31,9 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                     //Parse String by removing tags, special Characters and contractions and then splitting it into words
                     String[] words = TextParser.parseInputXml(postBody).split("[^A-Za-z']");
                     for (String word : words) {
-                        context.write(new Text(word), new IntWritable(1));
+                        if (word.equals("useless")) {
+                            context.write(new Text(word), new IntWritable(1));
+                        }
                     }
                 }
             }
