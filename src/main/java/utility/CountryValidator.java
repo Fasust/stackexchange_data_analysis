@@ -2,16 +2,26 @@ package utility;
 
 import java.util.*;
 
-public final class CountryValidator {
+public class CountryValidator {
 
-    private static final Set<String> COUNTRIES = new HashSet<String> (Arrays.asList(Locale.getISOCountries()));
+    private ArrayList<String> countries;
+
+    public CountryValidator(){
+        countries = new ArrayList<>();
+
+        for (String iso : Locale.getISOCountries()) {
+            Locale l = new Locale("", iso);
+
+            countries.add(l.getDisplayCountry().toLowerCase());
+        }
+    }
 
     /**
      * Check if String is the name of a ISO Country
      * @param loc potential Country
      * @return
      */
-    public static boolean isCountry(String loc){
-        return COUNTRIES.contains(loc);
+    public boolean isCountry(String loc){
+        return countries.contains(loc);
     }
 }
