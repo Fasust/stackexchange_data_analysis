@@ -26,8 +26,11 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
                 /**
                  * Users have no restrictions when entering their location.
-                 * Thusly I decided to split the location string and check if a given substring is a valid ISO country
-                 * If this is the case, Im counting it as the country of origin. If not, the location is invalid.
+                 * Thusly I decided to split the location string and check if
+                 * a given substring is a valid ISO country/country code
+                 * If this is the case, Im counting it as the country of origin.
+                 * If not, the location is invalid.
+                 * This does Leave out Countries consisting of 2 words.
                  */
 
                 String location = nList.item(i).getAttributes().getNamedItem("Location").getNodeValue();

@@ -4,24 +4,28 @@ import java.util.*;
 
 public class CountryValidator {
 
-    private ArrayList<String> countries;
+    private ArrayList<String> countryNames;
+    private ArrayList<String> countryCodes;
 
     public CountryValidator(){
-        countries = new ArrayList<>();
+        countryCodes = new ArrayList<>();
+        countryNames = new ArrayList<>();
 
         for (String iso : Locale.getISOCountries()) {
             Locale l = new Locale("", iso);
 
-            countries.add(l.getDisplayCountry().toLowerCase());
+            countryNames.add(l.getDisplayCountry().toLowerCase());
+            countryCodes.add(iso.toLowerCase());
         }
     }
 
     /**
      * Check if String is the name of a ISO Country
+     * Or if the String is a Country code
      * @param loc potential Country
-     * @return
+     * @return boolean
      */
     public boolean isCountry(String loc){
-        return countries.contains(loc);
+        return countryNames.contains(loc) || countryCodes.contains(loc);
     }
 }
