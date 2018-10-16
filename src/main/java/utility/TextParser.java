@@ -20,6 +20,10 @@ public class TextParser {
         input = input.replaceAll("'s"," is");
         input = input.replaceAll("'re"," are");
         input = input.replaceAll("'ve"," have");
+
+        //Breaks and spaces
+        input = input.trim().replaceAll(" +", " ");
+        input = input.replaceAll("\n", "").replaceAll("\r", "");
         input = input.toLowerCase();
 
         return input;
