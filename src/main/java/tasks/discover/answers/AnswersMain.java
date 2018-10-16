@@ -1,4 +1,4 @@
-package tasks.numbers.useless;
+package tasks.discover.answers;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -10,18 +10,18 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import xml_reader.XmlInputFormat;
 
-public class UselessMain {
+public class AnswersMain {
 
     public static void main(String[] args) {
         if (args.length != 2) {
-            System.err.println("Usage: UselessMain <input path> <output path>");
+            System.err.println("Usage: AnswersMain <input path> <output path>");
             System.exit(-1);
         }
 
         try {
             final Job job = Job.getInstance(new Configuration());
-            job.setJarByClass(UselessMain.class);
-            job.setJobName("Useless word counter.");
+            job.setJarByClass(AnswersMain.class);
+            job.setJobName("Questions with answer counter.");
 
             //Input Format
             job.setInputFormatClass(XmlInputFormat.class);
@@ -32,7 +32,7 @@ public class UselessMain {
             job.setMapOutputValueClass(IntWritable.class);
 
             //Reducer & Combiner
-            job.setReducerClass(tasks.warmup.wordcount.Reduce.class);
+            job.setReducerClass(Reduce.class);
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(LongWritable.class);
 
