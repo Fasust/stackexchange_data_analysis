@@ -1,6 +1,5 @@
-package tasks.numbers.bigram;
+package tasks.numbers.trigram;
 
-import javafx.util.Pair;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -36,14 +35,16 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                     String[] words = TextParser.parseInputXml(title).split("[^A-Za-z']");
 
                     String prev = "";
+                    String mid = "";
 
                     for (String word : words) {
 
-                        if (!word.equals("") && !prev.equals("")) {//For each word, we check if we have a bigram. If we do, we write to context.
-                            context.write(new Text(prev + " " + word), new IntWritable(1));
+                        if (!word.equals("") && !prev.equals("") && !mid.equals("")) {//For each word, we check if we have a bigram. If we do, we write to context.
+                            context.write(new Text(prev + " " + mid + " " + word), new IntWritable(1));
                         }
 
-                        prev = word;
+                        prev = mid;
+                        mid = word;
                     }
                 }
             }
@@ -51,6 +52,5 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
