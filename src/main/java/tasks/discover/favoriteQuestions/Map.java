@@ -1,4 +1,4 @@
-package tasks.discover.topQuestions;
+package tasks.discover.favoriteQuestions;
 
 
 import org.apache.hadoop.io.LongWritable;
@@ -25,16 +25,16 @@ public class Map extends Mapper<LongWritable, Text, LongWritable, Text> {
                 //Check if the Post is a Question
                 if(type.equals("1")){
 
-                    //Get ID, body and Score
+                    //Get ID, body and FavoriteCount
                     String id = nList.item(i).getAttributes().getNamedItem("Id").getNodeValue();
                     String body = nList.item(i).getAttributes().getNamedItem("Body").getNodeValue();
-                    String score = nList.item(i).getAttributes().getNamedItem("Score").getNodeValue();
+                    String favoriteCount = nList.item(i).getAttributes().getNamedItem("FavoriteCount").getNodeValue();
 
-                    //Parse body of question
+                    //parse question body
                     body = TextParser.parseInputXml(body);
 
                     //Map with score as key and id as value
-                    context.write(new LongWritable(Integer.parseInt(score)), new Text(id + " | " +  body));
+                    context.write(new LongWritable(Integer.parseInt(favoriteCount)), new Text(id + " | " +  body));
                 }
 
             }
