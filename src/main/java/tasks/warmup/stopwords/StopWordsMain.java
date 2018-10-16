@@ -35,8 +35,6 @@ public class StopWordsMain {
 
             //Reducer
             job.setReducerClass(Reduce.class);
-
-            
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(NullWritable.class);
 
