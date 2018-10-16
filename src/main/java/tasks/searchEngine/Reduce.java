@@ -16,11 +16,15 @@ public class Reduce extends Reducer<Text, IntWritable, Text, Text> {
     @Override
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) {
         StringBuilder output = new StringBuilder();
+        HashSet<Integer> entrySet = new HashSet<>();
 
+        //Convert to Int HashSet to remove Repetitions
         for(IntWritable entry : values){
-            if(!output.toString().contains(entry.toString())){
-                output.append(entry).append(",");
-            }
+            entrySet.add(entry.get());
+        }
+
+        for (Integer e : entrySet){
+            output.append(e).append(",");
         }
 
         try {
