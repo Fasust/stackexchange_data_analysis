@@ -34,7 +34,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                 String[] potentialCountries = TextParser.parseInputXml(location).split("[^A-Za-z']");
 
                 for(String coun : potentialCountries){
-                    if(countryValidator.isCountry(coun.toLowerCase())){
+                    if(countryValidator.isCountry(coun)){
                         context.write(new Text(coun), new IntWritable(1));
                     }
                 }
