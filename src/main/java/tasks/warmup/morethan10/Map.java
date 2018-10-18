@@ -31,7 +31,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
                     //Parse String by removing tags, special Characters and contractions and then splitting it into words
                     String[] words = TextParser.parseInputXml(postBody).split("[^A-Za-z']");
-                    if (words.length >= 10) { //If the title has 10 or more words, we add it to the output.
+                    if (words.length > 10) { //If the title has more than 10 words, we add it to the output.
                         context.write(new Text("Titles with more than 10 words: "), new IntWritable(1));
                     }
                 }
