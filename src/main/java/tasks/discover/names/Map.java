@@ -25,7 +25,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                 String name = nList.item(i).getAttributes().getNamedItem("DisplayName").getNodeValue();
 
                 //Split by spaces and remove breaks
-                name = name.replaceAll("\n", "").replaceAll("\r", "");
+                name = name.replaceAll("\n", " ").replaceAll("\r", " ");
                 String[] words = name.split(" ");
                 for (String word : words) {
                     context.write(new Text(word), new IntWritable(1));
