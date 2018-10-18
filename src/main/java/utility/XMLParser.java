@@ -16,13 +16,15 @@ public class XMLParser {
     /**
      * Parse XML string to a NodeList.
      * @param xmlString input XML String
-     * @param nodeTagName every element with this Tag Name will be turned into a Node in the final List
+     * @param nodeTagName every element with this Tag Name will be
+     *                    turned into a Node in the final List
      * @return Parsed NodeList
      * @throws ParserConfigurationException
      * @throws IOException
      * @throws SAXException
      */
-    public static NodeList xmlStringToNodelist(String xmlString, String nodeTagName) throws ParserConfigurationException, IOException, SAXException {
+    public static NodeList xmlStringToNodelist(String xmlString, String nodeTagName)
+            throws ParserConfigurationException, IOException, SAXException {
 
         //Convert String to XML Document
         InputStream is = new ByteArrayInputStream(xmlString.getBytes());

@@ -33,7 +33,7 @@ public class CountingMain {
 
             //Reducer
             job.setReducerClass(Reduce.class);
-            job.setOutputKeyClass(Text.class);
+            job.setOutputKeyClass(IntWritable.class);
             job.setOutputValueClass(NullWritable.class);
 
             //Process Args

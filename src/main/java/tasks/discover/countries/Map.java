@@ -39,6 +39,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                 for(String coun : potentialCountries){
                     if(countryValidator.isCountry(coun)){
                         context.write(new Text(coun), new IntWritable(1));
+                        break;
                     }
                 }
             }

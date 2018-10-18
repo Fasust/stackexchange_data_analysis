@@ -21,6 +21,8 @@ public class TextParser {
         input = input.replaceAll("'re"," are");
         input = input.replaceAll("'ve"," have");
 
+        input = input.replaceAll(" '"," ");
+
         //Breaks and spaces
         input = input.trim().replaceAll(" +", " ");
         input = input.replaceAll("\n", "").replaceAll("\r", "");
