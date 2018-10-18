@@ -3,7 +3,6 @@ package tasks.discover.names;
 public class NameObject implements Comparable<NameObject> {
 
     private Integer nameCount;
-
     private String name;
 
     public NameObject(Integer nameCount, String name) {

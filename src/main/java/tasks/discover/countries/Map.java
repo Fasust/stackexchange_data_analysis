@@ -33,6 +33,9 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                  * This does Leave out Countries consisting of 2 words.
                  */
 
+                if(nList.item(i).getAttributes().getNamedItem("Location") == null){
+                    continue;
+                }
                 String location = nList.item(i).getAttributes().getNamedItem("Location").getNodeValue();
                 String[] potentialCountries = TextParser.parseInputXml(location).split("[^A-Za-z']");
 
