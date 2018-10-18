@@ -10,13 +10,17 @@ public class Reduce extends Reducer<Text, Text, Text, NullWritable> {
 
     @Override
     protected void reduce(Text key, Iterable<Text> values, Context context) {
+        int count = 0;
         for (Text value : values) {
+            count++;
             if (value.toString().equals("stopword")) {
                 return;
             }
         }
         try {
-            context.write(new Text(key) , NullWritable.get());
+            for (int i = 0; i < count; i++) { //To maintain the original number of words.
+                context.write(new Text(key) , NullWritable.get());
+            }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
