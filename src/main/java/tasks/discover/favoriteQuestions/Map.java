@@ -24,6 +24,9 @@ public class Map extends Mapper<LongWritable, Text, LongWritable, Text> {
 
                 //Check if the Post is a Question
                 if(type.equals("1")){
+                    if(nList.item(i).getAttributes().getNamedItem("FavoriteCount") == null){
+                        continue;
+                    }
 
                     //Get ID, body and FavoriteCount
                     String id = nList.item(i).getAttributes().getNamedItem("Id").getNodeValue();
