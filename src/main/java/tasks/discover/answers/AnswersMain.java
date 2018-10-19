@@ -21,7 +21,7 @@ public class AnswersMain {
         try {
             final Job job = Job.getInstance(new Configuration());
             job.setJarByClass(AnswersMain.class);
-            job.setJobName("Questions with answer counter.");
+            job.setJobName("Answers.");
 
             //Input Format
             job.setInputFormatClass(XmlInputFormat.class);

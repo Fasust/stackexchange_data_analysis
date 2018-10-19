@@ -14,14 +14,14 @@ public class NamesMain {
 
     public static void main(String[] args) {
         if (args.length != 2) {
-            System.err.println("Usage: WordCountMain <input path> <output path>");
+            System.err.println("Usage: NamesMain <input path> <output path>");
             System.exit(-1);
         }
 
         try {
             final Job job = Job.getInstance(new Configuration());
             job.setJarByClass(NamesMain.class);
-            job.setJobName("Top Users");
+            job.setJobName("Names");
 
             //Input Format
             job.setInputFormatClass(XmlInputFormat.class);

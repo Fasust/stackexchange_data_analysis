@@ -21,7 +21,7 @@ public class UselessMain {
         try {
             final Job job = Job.getInstance(new Configuration());
             job.setJarByClass(UselessMain.class);
-            job.setJobName("Useless word counter.");
+            job.setJobName("Useless.");
 
             //Input Format
             job.setInputFormatClass(XmlInputFormat.class);
