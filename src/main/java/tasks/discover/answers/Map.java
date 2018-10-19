@@ -27,7 +27,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                     //Get the answer count of the Post
                     String answerCount = nList.item(i).getAttributes().getNamedItem("AnswerCount").getNodeValue();
 
-                    if (Integer.parseInt(answerCount) >= 1) { //If the question has 1 or more answers, we keep it.
+                    if (Integer.parseInt(answerCount) >= 1) {
                         context.write(new Text("answer"), new IntWritable(1));
                     }
                 }

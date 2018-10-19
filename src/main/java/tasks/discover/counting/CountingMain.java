@@ -14,7 +14,7 @@ public class CountingMain {
 
     public static void main(String[] args) {
         if (args.length != 2) {
-            System.err.println("Usage: CountingMain <input path> <output path>");
+            System.err.println("Usage: WordCountMain <input path> <output path>");
             System.exit(-1);
         }
 

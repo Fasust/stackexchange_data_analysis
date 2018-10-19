@@ -14,9 +14,10 @@ public class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) {
         int locationCount = 0;
 
-        for (IntWritable value : values) { //Add one for each value associated to the key.
+        for (IntWritable value : values) {
             locationCount++;
         }
+
         try {
             context.write(key ,new IntWritable(locationCount));
         } catch (IOException | InterruptedException e) {

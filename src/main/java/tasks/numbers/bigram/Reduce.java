@@ -34,7 +34,7 @@ public class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
     @Override
     protected void cleanup(Context context) {
         try {
-            for (Pair<String,Integer> bigram : topBigrams) { //Write to output all the top bigrams found.
+            for (Pair<String,Integer> bigram : topBigrams) {
                 context.write(new Text(bigram.getKey()) ,new IntWritable(bigram.getValue()));
             }
         } catch (IOException | InterruptedException e) {

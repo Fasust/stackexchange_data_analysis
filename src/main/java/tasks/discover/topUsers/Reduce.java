@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class Reduce extends Reducer<LongWritable, Text, Text, LongWritable> {
 
-    //List of Top Users consisting of there Id and Reputation
+    //List of Top Users consisting of there Id and Reputaion
     private static int writeCount = 0;
     private static final int OUTPUT_SIZE = 10;
 
@@ -27,7 +27,7 @@ public class Reduce extends Reducer<LongWritable, Text, Text, LongWritable> {
             return;
         }
 
-        //Iterate through the users and keep adding them to context, as long as we have not reached the OUTPUT_SIZE.
+        //Iterate through the users and keep adding them to context, as long as we have not reached the Output Size
         for(Text userId : values){
             if(writeCount < OUTPUT_SIZE){
                 context.write(new Text(userId), key);

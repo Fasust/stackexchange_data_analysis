@@ -21,7 +21,7 @@ public class TrigramMain {
         try {
             final Job job = Job.getInstance(new Configuration());
             job.setJarByClass(TrigramMain.class);
-            job.setJobName("Trigram.");
+            job.setJobName("Most common trigram finder.");
 
             //Input Format
             job.setInputFormatClass(XmlInputFormat.class);

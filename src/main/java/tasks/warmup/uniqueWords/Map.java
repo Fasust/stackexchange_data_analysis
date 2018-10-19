@@ -39,9 +39,10 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                     //Parse String by removing tags, special Characters and contractions and then splitting it into words
                     String[] words = TextParser.parseInputXml(titleBody).split("[^A-Za-z']");
                     for (String word : words) {
-                        if(word.isEmpty()){ //If the word is equal to the empty string we discard it.
+                        if(word.isEmpty()){
                             continue;
                         }
+
                         context.write(new Text(word), new IntWritable(1));
                     }
                 }

@@ -13,7 +13,7 @@ public class Reduce extends Reducer<Text, Text, Text, NullWritable> {
         int count = 0;
         for (Text value : values) {
             count++;
-            if (value.toString().equals("stopword")) { //If we detect a stop word string on the value array, we have to discard the word.
+            if (value.toString().equals("stopword")) {
                 return;
             }
         }

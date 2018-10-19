@@ -24,7 +24,7 @@ public class Map extends Mapper<LongWritable, Text, LongWritable, Text> {
                 String id = nList.item(i).getAttributes().getNamedItem("Id").getNodeValue();
                 String reputation = nList.item(i).getAttributes().getNamedItem("Reputation").getNodeValue();
 
-                //Map with reputation as key and id as value
+                //Map with rep as key and id as value
                 context.write(new LongWritable(Integer.parseInt(reputation)), new Text(id));
 
             }

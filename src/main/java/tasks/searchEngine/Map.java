@@ -36,14 +36,12 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                 }
                 wordBase.append( nList.item(i).getAttributes().getNamedItem("Body").getNodeValue());
 
-                //Parse String by removing tags, special Characters and contractions and then splitting it into words
                 String[] words = TextParser.parseInputXml(wordBase.toString()).split("[^A-Za-z']");
 
                 for (String word : words) {
-                    if(word.isEmpty()){ //If the word is the empty string, we discard it.
+                    if(word.isEmpty()){
                         continue;
                     }
-                    //We write the word as the key and the id associated as the value.
                     context.write(new Text(word), new IntWritable(Integer.parseInt(id)));
                 }
 

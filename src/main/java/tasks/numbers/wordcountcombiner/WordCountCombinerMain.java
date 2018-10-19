@@ -23,7 +23,7 @@ public class WordCountCombinerMain {
         try {
             final Job job = Job.getInstance(new Configuration());
             job.setJarByClass(WordCountCombinerMain.class);
-            job.setJobName("Word Count Combiner.");
+            job.setJobName("Word counter with combiner.");
 
             //Input Format
             job.setInputFormatClass(XmlInputFormat.class);
@@ -35,7 +35,7 @@ public class WordCountCombinerMain {
 
             //Reducer & Combiner
             job.setReducerClass(Reduce.class);
-            job.setCombinerClass(Reduce.class); //We use a combiner between mapping and reducing stages.
+            job.setCombinerClass(Reduce.class);
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(LongWritable.class);
 
