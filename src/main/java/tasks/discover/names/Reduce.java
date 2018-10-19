@@ -23,7 +23,7 @@ public class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
         //Add to sorted map
         nameMap.add(new NameObject(nameCount,key.toString()));
 
-        //Make sure the map only consists of OUTPUT_SIZE amount of values (Highest)
+        //Make sure the map only consists of OUTPUT_SIZE amount of values (Highest).
         while (nameMap.size() > OUTPUT_SIZE){
            nameMap.pollFirst();
         }
@@ -32,7 +32,7 @@ public class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
     @Override
     protected void cleanup(Context context) throws IOException, InterruptedException {
 
-        //Output all Values in nameMap
+        //Output all values in nameMap
         for(NameObject name : nameMap) {
             context.write(
                     new Text(name.getName()),

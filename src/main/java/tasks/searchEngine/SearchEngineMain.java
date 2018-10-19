@@ -14,14 +14,14 @@ public class SearchEngineMain {
 
     public static void main(String[] args) {
         if (args.length != 2) {
-            System.err.println("Usage: AnswersMain <input path> <output path>");
+            System.err.println("Usage: SearchEngineMain <input path> <output path>");
             System.exit(-1);
         }
 
         try {
             final Job job = Job.getInstance(new Configuration());
             job.setJarByClass(SearchEngineMain.class);
-            job.setJobName("SearchEngine");
+            job.setJobName("Search Engine");
 
             //Input Format
             job.setInputFormatClass(XmlInputFormat.class);

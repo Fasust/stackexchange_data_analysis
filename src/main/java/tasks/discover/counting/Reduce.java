@@ -16,14 +16,13 @@ public class Reduce extends Reducer<Text, IntWritable, IntWritable, NullWritable
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) {
         int length = 0;
 
-        for (IntWritable value : values) {
-            length ++;
+        for (IntWritable value : values) { //Add one for each value associated to the key.
+            length++;
         }
 
-        //check if there is only one user with ID (Unique)
+        //Check if there is only one user with ID (Unique).
         if(length == 1){
-
-            //If yes, add them
+            //If it is, add it
             uniqueUserCount++;
         }
 

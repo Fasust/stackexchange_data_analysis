@@ -22,7 +22,7 @@ public class Reduce extends Reducer<Text, IntWritable, LongWritable, NullWritabl
         }
 
         try {
-            //average by dividing total number of responses by number of questions
+            //Average by dividing total number of responses by number of questions
             context.write(new LongWritable(totalResponses / numberOfQuestions) ,NullWritable.get());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

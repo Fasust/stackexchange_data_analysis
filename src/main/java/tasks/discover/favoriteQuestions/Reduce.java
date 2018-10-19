@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Reduce extends Reducer<LongWritable, Text, LongWritable, Text> {
 
-    //List of Top Users consisting of there Id and Reputaion
+    //List of Top Users consisting of there Id and Reputation
     private static int writeCount = 0;
     private static final int OUTPUT_SIZE = 10;
 

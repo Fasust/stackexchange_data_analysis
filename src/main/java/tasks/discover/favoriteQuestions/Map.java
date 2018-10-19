@@ -33,13 +33,12 @@ public class Map extends Mapper<LongWritable, Text, LongWritable, Text> {
                     String body = nList.item(i).getAttributes().getNamedItem("Body").getNodeValue();
                     String favoriteCount = nList.item(i).getAttributes().getNamedItem("FavoriteCount").getNodeValue();
 
-                    //parse question body
+                    //Parse question body
                     body = TextParser.parseInputXml(body);
 
                     //Map with score as key and id as value
                     context.write(new LongWritable(Integer.parseInt(favoriteCount)), new Text(id + " | " +  body));
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -13,9 +13,8 @@ public class MapStopwords extends Mapper<LongWritable, Text, Text, Text> {
         try {
 
             String line = value.toString();
-            String[] words = line.split("\n");
-            //Tips: regex to remove all non-words and digits. [\\W|\\d]
-            for (String word : words) {
+            String[] words = line.split("\n"); //In this file, we split by new line.
+            for (String word : words) {//We use the keyword "sotpwords" to differentiate it from the "popularwords".
                 context.write(new Text(word), new Text("stopword"));
             }
         } catch (Exception e) {

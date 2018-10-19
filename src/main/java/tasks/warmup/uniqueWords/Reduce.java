@@ -13,11 +13,10 @@ public class Reduce extends Reducer<Text, IntWritable, Text, NullWritable> {
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) {
         int length = 0;
 
-        for (IntWritable value : values) {
-            length += value.get();
+        for (IntWritable value : values) { //Add one for each value associated to the key.
+            length++;
         }
-
-        if(length == 1){
+        if(length == 1){ //If we just have a single value, is a valid word.
             try {
                 context.write(new Text(key) , NullWritable.get());
             } catch (IOException | InterruptedException e) {

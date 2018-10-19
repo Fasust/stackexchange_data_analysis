@@ -16,7 +16,7 @@ import xml_reader.XmlInputFormat;
 public class StopWordsMain {
 
     public static void main(String[] args) {
-        if (args.length != 3) {
+        if (args.length < 3) {
             System.err.println("Usage: StopWordsMain <stopwords path> <input path> <output path>");
             System.exit(-1);
         }
@@ -24,7 +24,7 @@ public class StopWordsMain {
         try {
             final Job job = Job.getInstance(new Configuration());
             job.setJarByClass(StopWordsMain.class);
-            job.setJobName("Stop Words filtering.");
+            job.setJobName("Stop Words.");
 
             //Input Format
             //job.setInputFormatClass(XmlInputFormat.class);
@@ -40,7 +40,7 @@ public class StopWordsMain {
 
             //Process Args
             MultipleInputs.addInputPath(job, new Path(args[0]),
-                    TextInputFormat.class, MapStopwords.class);
+                    TextInputFormat.class, MapStopwords.class); //We use MultipleInputs since we need more than one file.
             MultipleInputs.addInputPath(job, new Path(args[1]),
                     XmlInputFormat.class, Map.class);
             FileOutputFormat.setOutputPath(job, new Path(args[2]));

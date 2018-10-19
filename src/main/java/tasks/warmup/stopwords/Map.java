@@ -29,10 +29,10 @@ public class Map extends Mapper<LongWritable, Text, Text, Text> {
                     //Get The Contents of the Post
                     String postBody = nList.item(i).getAttributes().getNamedItem("Title").getNodeValue();
 
-                    //Parse String by removing tags, special Characters and contractions and then splitting it into words
+                    //Parse String by removing tags, special Characters and contractions and then splitting it into words.
                     String[] words = TextParser.parseInputXml(postBody).split("[^A-Za-z']");
 
-                    for (String word : words) {
+                    for (String word : words) { //We use the keyword "popularword" to differentiate it from the "stopwords".
                         context.write(new Text(word), new Text("popularword"));
                     }
                 }

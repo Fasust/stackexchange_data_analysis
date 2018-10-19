@@ -21,7 +21,7 @@ public class BigramMain {
         try {
             final Job job = Job.getInstance(new Configuration());
             job.setJarByClass(BigramMain.class);
-            job.setJobName("Most common bigram finder.");
+            job.setJobName("Bigram.");
 
             //Input Format
             job.setInputFormatClass(XmlInputFormat.class);

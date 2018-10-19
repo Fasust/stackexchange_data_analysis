@@ -31,7 +31,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                     //Parse String by removing tags, special Characters and contractions and then splitting it into words
                     String[] words = TextParser.parseInputXml(postBody).split("[^A-Za-z']");
                     for (String word : words) {
-                        if (word.equals("useless")) {
+                        if (word.equals("useless")) { //We just want the word "useless", we discard all the others.
                             context.write(new Text(word), new IntWritable(1));
                         }
                     }

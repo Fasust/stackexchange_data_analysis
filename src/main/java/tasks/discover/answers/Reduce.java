@@ -11,8 +11,8 @@ public class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
     @Override
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) {
         int finalValue = 0;
-        for (IntWritable value : values) {
-            finalValue += value.get();
+        for (IntWritable value : values) { //Add one for each value associated to the key.
+            finalValue++;
         }
         try {
             context.write(new Text("Questions with more than one answer: ") ,new IntWritable(finalValue));

@@ -29,6 +29,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
                     String answerCount = nList.item(i).getAttributes().getNamedItem("AnswerCount").getNodeValue();
 
+                    //We just pass the number of answers for that post.
                     context.write(new Text("answerCount"), new IntWritable(Integer.parseInt(answerCount)));
                 }
             }

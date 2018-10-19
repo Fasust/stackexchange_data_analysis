@@ -15,18 +15,16 @@ public class Reduce extends Reducer<Text, Text, Text, Text> {
         int length = 0;
         String userName = "";
 
-        //Check if there is Multiple user entries with the same id (Uniqueness)
+        //Check if there is Multiple user entries with the same id (Uniqueness).
         for (Text value : values) {
             userName = value.toString();
             length ++;
         }
         
-        if(length == 1){
+        if(length == 1) { //If we just have one entry for this id, we write it to the output.
             try {
                 context.write(key, new Text(userName));
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
         }

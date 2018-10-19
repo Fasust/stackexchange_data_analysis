@@ -21,7 +21,7 @@ public class MoreThan10Main {
         try {
             final Job job = Job.getInstance(new Configuration());
             job.setJarByClass(MoreThan10Main.class);
-            job.setJobName("Question with more than 10 words counter.");
+            job.setJobName("More Than 10.");
 
             //Input Format
             job.setInputFormatClass(XmlInputFormat.class);

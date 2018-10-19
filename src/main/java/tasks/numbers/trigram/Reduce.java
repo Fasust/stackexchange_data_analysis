@@ -34,7 +34,7 @@ public class Reduce extends Reducer<Text, IntWritable, Text, IntWritable> {
     @Override
     protected void cleanup(Context context) {
         try {
-            for (Pair<String,Integer> trigram : topTrigrams) {
+            for (Pair<String,Integer> trigram : topTrigrams) { //Write to output all the top trigrams found.
                 context.write(new Text(trigram.getKey()) ,new IntWritable(trigram.getValue()));
             }
         } catch (IOException | InterruptedException e) {

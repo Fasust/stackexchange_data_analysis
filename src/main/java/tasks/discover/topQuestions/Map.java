@@ -25,12 +25,12 @@ public class Map extends Mapper<LongWritable, Text, LongWritable, Text> {
                 //Check if the Post is a Question
                 if(type.equals("1")){
 
-                    //Get ID, body and Score
+                    //Get ID, Body and Score
                     String id = nList.item(i).getAttributes().getNamedItem("Id").getNodeValue();
                     String body = nList.item(i).getAttributes().getNamedItem("Body").getNodeValue();
                     String score = nList.item(i).getAttributes().getNamedItem("Score").getNodeValue();
 
-                    //Parse body of question
+                    //Parse body of the question
                     body = TextParser.parseInputXml(body);
 
                     //Map with score as key and id as value

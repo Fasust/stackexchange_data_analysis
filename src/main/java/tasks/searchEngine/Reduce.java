@@ -22,19 +22,14 @@ public class Reduce extends Reducer<Text, IntWritable, Text, Text> {
         for(IntWritable entry : values){
             entrySet.add(entry.get());
         }
-
+        //Comma appending for nice output.
         for (Integer e : entrySet){
             output.append(e).append(",");
         }
-
         try {
             context.write(key, new Text(output.toString()));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 }

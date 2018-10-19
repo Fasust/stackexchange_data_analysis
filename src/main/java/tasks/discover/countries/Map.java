@@ -33,6 +33,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                  * This does Leave out Countries consisting of 2 words.
                  */
 
+                //If there is not a valid location, go to the next element.
                 if(nList.item(i).getAttributes().getNamedItem("Location") == null){
                     continue;
                 }
@@ -40,7 +41,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                 String[] potentialCountries = TextParser.parseInputXml(location).split("[^A-Za-z']");
 
                 for(String coun : potentialCountries){
-                    if(countryValidator.isCountry(coun)){
+                    if(countryValidator.isCountry(coun)){ //If we detect a valid country, we write to context and go to next element.
                         context.write(new Text(coun), new IntWritable(1));
                         break;
                     }

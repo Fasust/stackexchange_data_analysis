@@ -28,12 +28,11 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
                 String[] tags = tagString.split("[<>]");
 
                 for (String tag : tags) {
-                    if(tag.isEmpty()){
+                    if(tag.isEmpty()){ //If the tag is the empty string, we discard it.
                         continue;
                     }
                     context.write(new Text(tag), new IntWritable(1));
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();
