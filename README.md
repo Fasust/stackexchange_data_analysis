@@ -7,3 +7,5 @@ We used the Hadoop MapReduce framework to analyse a large collection data from t
 The analysis was mainly focused on users and blog posts.
 This repository includes all the MapReduce-Jobs we created to fulfill the tasks outlined in the assignment.
 
+The full <a href="https://github.com/Fasust/stackexchange_data_analysis/blob/master/Big%20Data%20MA120%20Documentation.pdf">Documentation</a> of the development process and an analysis of the results can be found here.
+
